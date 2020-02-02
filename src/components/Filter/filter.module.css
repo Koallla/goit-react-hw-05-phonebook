@@ -1,0 +1,13 @@
+.input_filter {
+  margin-bottom: 15px;
+  background-color: rgb(207, 207, 207);
+  height: 25px;
+  width: 250px;
+  border-radius: 20px;
+  padding-left: 10px;
+}
+
+.input_filter:focus {
+  background-color: rgb(188, 245, 202);
+  transition: all 0.4s;
+}

@@ -1,0 +1,47 @@
+.list {
+  padding: 0;
+  list-style: none;
+  font-size: 18px;
+}
+
+.item {
+  position: relative;
+  max-width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  background-color: rgb(192, 192, 192);
+  margin: 5px;
+  padding: 10px;
+  vertical-align: top;
+  border: 2px solid rgb(31, 25, 25);
+  border-radius: 10px;
+  height: 30px;
+  text-align: right;
+}
+
+.text {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.number {
+  margin-right: 150px;
+}
+
+.btn {
+  position: absolute;
+  height: 25px;
+  width: 60px;
+  border-radius: 10px;
+  margin-right: 10px;
+  background-color: rgb(207, 207, 207);
+  cursor: pointer;
+  right: 0;
+}
+
+.btn:hover {
+  background-color: rgb(100, 100, 100);
+  transition: all 0.4s;
+}

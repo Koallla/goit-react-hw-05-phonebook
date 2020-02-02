@@ -1,0 +1,35 @@
+.text_form {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input_form {
+  margin-bottom: 15px;
+  background-color: rgb(207, 207, 207);
+  height: 25px;
+  width: 350px;
+  border-radius: 20px;
+  padding-left: 10px;
+}
+
+.input_form:focus {
+  background-color: rgb(188, 245, 202);
+  transition: all 0.4s;
+}
+
+.btn_submit {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  height: 25px;
+  width: 300px;
+  border-radius: 10px;
+  margin-top: 30px;
+  background-color: rgb(207, 207, 207);
+  cursor: pointer;
+}
+
+.btn_submit:hover {
+  background-color: rgb(100, 100, 100);
+  transition: all 0.4s;
+}
