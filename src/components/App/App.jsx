@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import PNotify from 'pnotify/dist/es/PNotify';
+import 'pnotify/dist/es/PNotifyAnimate';
 import ContactForm from '../ContactForm/ContactForm';
 import ContactList from '../ContactList/ContactList';
 import Filter from '../Filter/Filter';
 import { filterContacts, findToMatch } from '../FilterContact/filterContact';
-import slide from '../Transitions/slide.module.css';
-import pop from '../Transitions/pop.module.css';
+import pop from '../../Transitions/pop.module.css';
 import styles from './app.module.css';
-
-console.log(slide);
+import '../../Transitions/title.css';
 
 export default class App extends Component {
   state = {
@@ -42,9 +41,22 @@ export default class App extends Component {
     if (contact.name) {
       // eslint-disable-next-line no-unused-expressions
       findContact
-        ? PNotify.alert(`${findContact.name} is already in contacts`)
+        ? PNotify.error({
+            title: 'Recording prohibited!',
+            text: `${findContact.name} is already in contacts`,
+            modules: {
+              Animate: {
+                animate: true,
+                inClass: 'lightSpeedIn',
+                outClass: 'lightSpeedOut',
+              },
+            },
+            addClass: 'notify',
+            animateSpeed: 1000,
+            delay: 5000,
+          })
         : this.setState(prevState => ({
-            contacts: [...prevState.contacts, contact],
+            contacts: [contact, ...prevState.contacts],
           }));
     } else {
       PNotify.error({
@@ -65,7 +77,7 @@ export default class App extends Component {
 
     return (
       <div className={styles.container}>
-        <CSSTransition in classNames={slide} timeout={250}>
+        <CSSTransition in classNames="slide" timeout={500} appear>
           <h1>Phonebook</h1>
         </CSSTransition>
 

@@ -48,6 +48,5 @@
     "lint-staged": "^8.1.5",
     "prettier": "^1.17.0",
     "prop-types": "^15.7.2"
-  },
-  "homepage": "https://Koallla.github.io/goit-react-hw-03-phonebook"
+  }
 }

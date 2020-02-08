@@ -3,7 +3,7 @@ import T from 'prop-types';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import styles from './contactList.module.css';
-import slide from '../Transitions/slide.module.css';
+import slide from '../../Transitions/slide.module.css';
 
 const ContactList = ({ contacts, onDelete }) =>
   contacts && (
@@ -13,20 +13,18 @@ const ContactList = ({ contacts, onDelete }) =>
           in
           classNames={slide}
           timeout={250}
+          unmountOnExit
           className={styles.item}
           key={el.id}
         >
           <li className={styles.item} key={el.id}>
-            <div className={styles.text}>
-              {el.name}: <span className={styles.number}>{el.number}</span>
-            </div>
+            <div className={styles.text}>{el.name}</div>
+            <span className={styles.number}>{el.number}</span>
             <button
               className={styles.btn}
               type="submit"
               onClick={() => onDelete(el.id)}
-            >
-              Delete
-            </button>
+            ></button>
           </li>
         </CSSTransition>
       ))}

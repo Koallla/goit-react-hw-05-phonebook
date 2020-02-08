@@ -5,8 +5,6 @@
 }
 
 .item {
-  position: relative;
-  max-width: 100%;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -16,32 +14,36 @@
   vertical-align: top;
   border: 2px solid rgb(31, 25, 25);
   border-radius: 10px;
-  height: 30px;
   text-align: right;
+  overflow-x: hidden;
 }
 
 .text {
-  width: 100%;
   display: flex;
   justify-content: space-between;
+  width: 150px;
+  overflow-x: hidden;
 }
 
 .number {
-  margin-right: 150px;
+  text-align: right;
 }
 
 .btn {
-  position: absolute;
-  height: 25px;
-  width: 60px;
-  border-radius: 10px;
+  height: 20px;
+  width: 30px;
   margin-right: 10px;
-  background-color: rgb(207, 207, 207);
+  background-color: rgb(192, 192, 192);
+  background-image: url('../../Img/kisspng-red-x-letter-computer-icons-red-x-5ac2fb75b18a39.2414215415227277977272.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
   cursor: pointer;
   right: 0;
+  border-width: 0px;
 }
 
 .btn:hover {
-  background-color: rgb(100, 100, 100);
-  transition: all 0.4s;
+  transform: scale(1.2);
+  transition: all 0.2s;
 }
