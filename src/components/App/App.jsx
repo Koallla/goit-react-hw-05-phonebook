@@ -18,7 +18,6 @@ export default class App extends Component {
 
   componentDidMount() {
     const savedContacts = localStorage.getItem('contacts');
-
     if (savedContacts) {
       const parsedContacts = JSON.parse(savedContacts);
       this.setState({ contacts: parsedContacts });
@@ -33,32 +32,32 @@ export default class App extends Component {
   }
 
   handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
   };
 
   addContact = contact => {
     const findContact = findToMatch(this.state.contacts, contact);
-    if (contact.name) {
-      // eslint-disable-next-line no-unused-expressions
-      findContact
-        ? PNotify.error({
-            title: 'Recording prohibited!',
-            text: `${findContact.name} is already in contacts`,
-            modules: {
-              Animate: {
-                animate: true,
-                inClass: 'lightSpeedIn',
-                outClass: 'lightSpeedOut',
-              },
-            },
-            addClass: 'notify',
-            animateSpeed: 1000,
-            delay: 5000,
-          })
-        : this.setState(prevState => ({
-            contacts: [contact, ...prevState.contacts],
-          }));
-    } else {
+    if (contact.name && findContact) {
+      PNotify.error({
+        title: 'Recording prohibited!',
+        text: `${findContact.name} is already in contacts`,
+        modules: {
+          Animate: {
+            animate: true,
+            inClass: 'lightSpeedIn',
+            outClass: 'lightSpeedOut',
+          },
+        },
+        addClass: 'notify',
+        animateSpeed: 1000,
+        delay: 5000,
+      });
+    } else if (!findContact && contact.name) {
+      this.setState(prevState => ({
+        contacts: [contact, ...prevState.contacts],
+      }));
+    } else if (!contact.name) {
       PNotify.error({
         text: "'Input name!'",
       });
@@ -81,10 +80,7 @@ export default class App extends Component {
           <h1>Phonebook</h1>
         </CSSTransition>
 
-        <ContactForm
-          onChange={this.handleChange}
-          onAddContact={this.addContact}
-        />
+        <ContactForm onAddContact={this.addContact} />
         <h2>Contacts</h2>
         <TransitionGroup>
           {contacts.length > 1 && (
